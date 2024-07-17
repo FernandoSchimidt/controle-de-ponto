@@ -6,7 +6,6 @@ import com.fernandoschimidt.controle_acesso.models.RegistroPonto;
 import com.fernandoschimidt.controle_acesso.repositories.BancoHorasRepository;
 import com.fernandoschimidt.controle_acesso.repositories.FuncionarioRepository;
 import com.fernandoschimidt.controle_acesso.repositories.RegistroPontoRepository;
-import com.fernandoschimidt.controle_acesso.scheduler.ValidaDiaTrabalho;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +33,16 @@ public class RegistroPontoService {
 
         Optional<Funcionario> funcionario = funcionarioRepository.findById(funcionarioID);
         return registroPontoRepository.findAllByFuncionario(funcionario);
+    }
+
+    public List<RegistroPonto> getUltimosRegistrosDoDia(Long funcionarioId) {
+        LocalDate today = LocalDate.now();
+        LocalDateTime startOfDay = today.atStartOfDay();
+        LocalDateTime endOfDay = today.plusDays(1).atStartOfDay();
+
+        return registroPontoRepository.findTop2ByFuncionarioIdAndHorarioBetweenOrderByHorarioDesc(
+                funcionarioId, startOfDay, endOfDay
+        );
     }
 
     public RegistroPonto registrarPonto(Long funcionarioId) {

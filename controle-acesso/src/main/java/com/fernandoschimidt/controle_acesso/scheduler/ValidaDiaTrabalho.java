@@ -8,8 +8,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.concurrent.TimeUnit;
 
 @Component
 public class ValidaDiaTrabalho {
@@ -20,7 +18,7 @@ public class ValidaDiaTrabalho {
     @Autowired
     private RegistroPontoService registroPontoService;
 
-    @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(cron = "0 1 0 * * *")
     public void checkDay() {
         LocalDate hoje = LocalDate.now();
         logger.info("Iniciando validação do dia de trabalho para {}", hoje);

@@ -3,6 +3,7 @@ import com.fernandoschimidt.controle_acesso.models.RegistroPonto;
 import com.fernandoschimidt.controle_acesso.services.RegistroPontoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -26,5 +27,12 @@ public class RegistroPontoController {
         } catch (IllegalStateException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
+    }
+
+
+    @GetMapping("/ultimos-registros/{funcionarioId}")
+    public ResponseEntity<List<RegistroPonto>> getUltimosRegistrosDoDia(@PathVariable Long funcionarioId) {
+        List<RegistroPonto> registros = registroPontoService.getUltimosRegistrosDoDia(funcionarioId);
+        return ResponseEntity.ok(registros);
     }
 }

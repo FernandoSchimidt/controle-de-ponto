@@ -12,4 +12,5 @@ public interface RegistroPontoRepository extends JpaRepository<RegistroPonto, Lo
     List<RegistroPonto> findByFuncionarioIdOrderByHorarioAsc(Long funcionarioId);
     List<RegistroPonto> findByFuncionarioIdAndHorarioBetween(Long funcionarioId, LocalDateTime start, LocalDateTime end);
     List<RegistroPonto> findAllByFuncionario(Optional<Funcionario> funcionario);
+    List<RegistroPonto> findTop2ByFuncionarioIdAndHorarioBetweenOrderByHorarioDesc(Long funcionarioId, LocalDateTime start, LocalDateTime end);
 }

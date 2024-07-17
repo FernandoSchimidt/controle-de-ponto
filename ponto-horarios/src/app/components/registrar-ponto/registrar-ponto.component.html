@@ -1,0 +1,13 @@
+<div class="container">
+  <button (click)="registrarPonto()">Registrar Ponto</button>
+  @if (ultimosRegistros.length > 0) {
+  <div>
+    <h3>Últimos Registros de Ponto do Dia</h3>
+    <ul>
+      @for (registro of ultimosRegistros; track $index) {
+      <li>{{ registro.horario | date : "short" }} - {{ registro.tipo }}</li>
+      }
+    </ul>
+  </div>
+  }
+</div>
