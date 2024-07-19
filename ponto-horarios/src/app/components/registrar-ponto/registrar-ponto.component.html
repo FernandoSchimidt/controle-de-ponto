@@ -1,11 +1,22 @@
 <div class="container">
-  <button (click)="registrarPonto()">Registrar Ponto</button>
+  <!-- <button (click)="registrarPonto()">Registrar Ponto</button> -->
+  <button
+    (mousedown)="startPress()"
+    (mouseup)="endPress()"
+    (mouseleave)="endPress()"
+    [ngClass]="{ pressed: isPressed }"
+    class="press-button"
+  >
+    Registrar Ponto
+  </button>
   @if (ultimosRegistros.length > 0) {
-  <div>
+  <div class="historico">
     <h3>Últimos Registros de Ponto do Dia</h3>
     <ul>
       @for (registro of ultimosRegistros; track $index) {
-      <li>{{ registro.horario | date : "short" }} - {{ registro.tipo }}</li>
+      <li>
+        {{ registro.horario | date : "short" }} - {{ registro.tipoRegistro }}
+      </li>
       }
     </ul>
   </div>
