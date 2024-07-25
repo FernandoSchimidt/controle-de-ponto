@@ -2,7 +2,7 @@
   <h2>Banco de Horas</h2>
   <ul>
     @for (horas of bancoHoras; track $index) {
-    <li>{{ horas.dia }} - {{ horas.horasExtras }} horas extras</li>
+    <li>{{ horas.horario  | date}} - {{ horas.tipoRegistro }} </li>
     }
   </ul>
 </div>
