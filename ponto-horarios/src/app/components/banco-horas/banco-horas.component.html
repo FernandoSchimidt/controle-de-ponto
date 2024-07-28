@@ -1,8 +1,33 @@
-<div class="container">
+<!-- <div class="container">
   <h2>Banco de Horas</h2>
   <ul>
     @for (horas of bancoHoras; track $index) {
     <li>{{ horas.horario  | date}} - {{ horas.tipoRegistro }} </li>
     }
   </ul>
-</div>
+  <button routerLink="/">Realizar novo apontamento</button>
+</div> -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Dia da Semana</th>
+      <th>Entrada</th>
+      <th>Saída para Almoço</th>
+      <th>Retorno do Almoço</th>
+      <th>Saída</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      @for (dia of tabela; track $index) {
+
+      <td>{{ dia.diaSemana }}</td>
+      <td>{{ dia.entrada }}</td>
+      <td>{{ dia.saidaAlmoco }}</td>
+      <td>{{ dia.retornoAlmoco }}</td>
+      <td>{{ dia.saida }}</td>
+      }
+    </tr>
+  </tbody>
+</table>

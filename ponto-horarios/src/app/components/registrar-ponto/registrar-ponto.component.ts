@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RegistroPontoService } from '../../services/registro-ponto.service';
 import { DatePipe, NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-ponto',
   standalone: true,
-  imports: [DatePipe, NgClass],
+  imports: [DatePipe, NgClass, RouterLink],
   templateUrl: './registrar-ponto.component.html',
   styleUrl: './registrar-ponto.component.scss',
 })
